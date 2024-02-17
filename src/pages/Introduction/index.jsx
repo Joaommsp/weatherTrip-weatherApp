@@ -31,7 +31,11 @@ const Introduction = () => {
             <Link to="/home" className="getStarted">
               Get started
             </Link>
-            <span className="about">Developed by <a href="https://www.linkedin.com/in/joão-marcos-melo/" target="_blank">João Marcos Melo</a></span>
+            <div className="aboutContainer">
+              <span className="about">Developed by <a href="https://www.linkedin.com/in/joão-marcos-melo/" target="_blank">João Marcos</a></span>
+              <span className="about">My <a href="">Linkedin</a></span>
+              <span className="about">My <a href="">Github</a></span>
+            </div>
           </SloganContainer>
         </ContentContainer>
         <CloudAnimationContainer>

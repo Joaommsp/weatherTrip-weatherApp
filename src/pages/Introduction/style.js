@@ -35,7 +35,7 @@ export const IntroContainer = styled.div`
   }
 
   .cloud {
-    background: #C9D7DD;
+    background: #c9d7dd;
     border-radius: 100px;
     box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
     height: 120px;
@@ -45,7 +45,7 @@ export const IntroContainer = styled.div`
 
   .cloud:after,
   .cloud:before {
-    background: #C9D7DD;
+    background: #c9d7dd;
     content: "";
     position: absolute;
     z-index: -1;
@@ -66,6 +66,10 @@ export const IntroContainer = styled.div`
     right: 50px;
     top: -90px;
   }
+
+  @media only screen and (max-width: 700px) {
+    height: 100%;
+  }
 `;
 
 export const CloudAnimationContainer = styled.div`
@@ -81,6 +85,10 @@ export const ContentContainer = styled.div`
   width: 100%;
   display: flex;
   overflow: hidden;
+
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export const BannerContainer = styled.div`
@@ -91,6 +99,25 @@ export const BannerContainer = styled.div`
 
   .banner {
     width: 500px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+
+    .banner {
+      width: 300px;
+    }
+  }
+
+  @media only screen and (min-width: 700px) and (max-width: 1000px) {
+    padding-left: 2rem;
+
+    .banner {
+      width: 300px;
+    }
   }
 `;
 
@@ -123,16 +150,75 @@ export const SloganContainer = styled.div`
     color: ${theme.primaryColor};
   }
 
-  .about {
+  .aboutContainer {
     width: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     margin-top: 10rem;
+    padding-right: 2rem;
+  }
+
+  .about {
+    text-align: center;
     color: ${theme.secondaryColor};
   }
 
   .about a {
     font-weight: bold;
     text-decoration: none;
-    color: ${theme.secondaryColor}
+    color: ${theme.secondaryColor};
+  }
+
+  @media only screen and (max-width: 700px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    padding-right: 0;
+    padding: 0 2rem;
+
+    h1 {
+      width: 100%;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #3c3633;
+      text-align: center;
+    }
+
+    .getStarted {
+      margin-top: 2rem;
+    }
+
+    .aboutContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 4rem;
+      padding-right: 0rem;
+      margin-bottom: 2rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media only screen and (min-width: 700px) and (max-width: 1000px) {
+    padding-right: 2rem;
+
+    h1 {
+      width: 100%;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #3c3633;
+      text-align: left;
+    }
   }
 `;

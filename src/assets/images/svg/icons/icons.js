@@ -3,6 +3,9 @@ import arrowDownIcon from "./arrowDown-icon.svg";
 import humidityIcon from "./humidity-icon.svg";
 import windIcon from "./wind-icon.svg";
 import searchIcon from "./search-icon.svg";
+import whatssAppIcon from "./zap-icon.svg";
+import linkedinIcon from "./linkedin-icon.svg";
+import gitHubIcon from "./github-icon.svg";
 
 export const Icons = {
   arrowUp: arrowUpIcon,
@@ -10,4 +13,7 @@ export const Icons = {
   humidity: humidityIcon,
   wind: windIcon,
   search: searchIcon,
+  zap: whatssAppIcon,
+  linkedin: linkedinIcon,
+  gittHub: gitHubIcon,
 };

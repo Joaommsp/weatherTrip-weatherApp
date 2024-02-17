@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types"; // Validação de props
 import { format } from "date-fns"; // formatador de Datas
+import ClipLoader from "react-spinners/HashLoader";
 
 import {
   WeatherForecastContainer,
@@ -12,6 +13,7 @@ import {
   SearchCityInput,
   SearchCityButton,
   CardWeatherHour,
+  LoadingScreen,
 } from "./styles";
 
 import { Icons } from "../../assets/images/svg/icons/icons";
@@ -35,6 +37,7 @@ const WeatherForecast = () => {
   const [imageBgUrl, setImageBgUrl] = useState("");
   const [conditionImg, setConditionImg] = useState("");
   const [weatherList, setWeatherList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let index = getRandomNumber(1, 9);
@@ -77,10 +80,7 @@ const WeatherForecast = () => {
         "chuva forte": "http://openweathermap.org/img/wn/09n@2x.png",
       };
 
-      setConditionImg(
-        cityImages[cityDescription] ||
-          "http://openweathermap.org/img/wn/02d@2x.png"
-      );
+      setConditionImg(cityImages[cityDescription] || null);
     };
     setConditionImage();
   }, [cityDescription]);
@@ -91,7 +91,7 @@ const WeatherForecast = () => {
       let mainData = await getWheather(cityName); // Dados Ao vivo
 
       const setCityData = (data) => {
-        const { name, main, wind, weather } = data; // Desestruturando 
+        const { name, main, wind, weather } = data; // Desestruturando
         setCityName(name);
         setCityTemp(main.temp);
         setCityMaxTemp(main.temp_max);
@@ -111,7 +111,7 @@ const WeatherForecast = () => {
 
       const timer = setTimeout(() => {
         setRequestMade(true);
-      }, 2000);
+      }, 4000);
 
       return () => clearTimeout(timer);
     }
@@ -126,7 +126,7 @@ const WeatherForecast = () => {
   function disapearMessage() {
     const timer = setTimeout(() => {
       setRepeatedRequest(false);
-    }, 2000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }
@@ -141,10 +141,21 @@ const WeatherForecast = () => {
     }
   };
 
+  const loadingData = () => {
+    setLoading(true);
+
+    let loadingTime = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(loadingTime);
+  };
+
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       setData();
       verify();
+      loadingData()
     }
   };
 
@@ -172,69 +183,91 @@ const WeatherForecast = () => {
   //
 
   return (
-    <WeatherForecastContainer $imagebg={imageBgUrl}>
-      <CityWeatherInfosContainer>
-        <ExceptionMessageContainer>
-          {!requestMade && (
-            <ExceptionMessage message="Eita !Cidade não encontrada"></ExceptionMessage>
-          )}
-          {repeatedRequest && (
-            <ExceptionMessage message="Opa! Nós já estamos nessa cidade"></ExceptionMessage>
-          )}
-        </ExceptionMessageContainer>
-        <SearchContainer>
-          <SearchCityInput
-            className="searchCityInput"
-            type="text"
-            placeholder="Para onde vamos ?"
-            onChange={handleCityChange}
-            onKeyDown={handleKeyDown}
+    <>
+      {loading && (
+        <LoadingScreen>
+          <ClipLoader
+            color={"#6937F5"}
+            loading={loading}
+            cssOverride={""}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
           />
-          <SearchCityButton
-            onClick={() => {
-              setData();
-              verify();
-            }}
-          >
-            <img
-              src={Icons.search}
-              alt="Search Indicator"
-              className="searchButtonIcon"
-            />
-          </SearchCityButton>
-        </SearchContainer>
-        <WeatherHeader>
-          <span className="cityTemp">{Number(cityTemp).toFixed(0)}°</span>
-          <span className="cityName">{storedCityName}</span>
-        </WeatherHeader>
-        <img src={conditionImg} alt="" />
-        <span className="cityWeatherDescription">{cityDescription}</span>
-        <div className="weatherComplementContainer">
-          <div className="weatherComplement">
-            <span className="cityHumidity">
-              {" "}
-              <img src={Icons.humidity} alt="Humidity indicator" />{" "}
-              {cityHumidity}%
-            </span>
-            <span className="cityMaxTemp">
-              {" "}
-              <img src={Icons.arrowUp} alt="Max Temp indicator" />
-              Máxima: {Number(cityMaxTemp).toFixed(0)}°
-            </span>
-            <span className="cityMinTemp">
-              {" "}
-              Mínima: {Number(cityMinTemp).toFixed(0)}°{" "}
-              <img src={Icons.arrowDown} alt="Min Temp indicator" />
-            </span>
-            <span className="cityWind">
-              {" "}
-              <img src={Icons.wind} alt="Wind Speed indicator" /> {cityWind}Km/h
-            </span>
-          </div>
-        </div>
-        <>{listWeathers()}</>
-      </CityWeatherInfosContainer>
-    </WeatherForecastContainer>
+        </LoadingScreen>
+      )}
+      {!loading && (
+        <WeatherForecastContainer $imagebg={imageBgUrl}>
+          <CityWeatherInfosContainer>
+            <ExceptionMessageContainer>
+              {!requestMade && (
+                <ExceptionMessage message="Eita !Cidade não encontrada"></ExceptionMessage>
+              )}
+              {repeatedRequest && (
+                <ExceptionMessage message="Opa! Nós já estamos nessa cidade"></ExceptionMessage>
+              )}
+            </ExceptionMessageContainer>
+            <SearchContainer>
+              <SearchCityInput
+                className="searchCityInput"
+                type="text"
+                placeholder="Para onde vamos ?"
+                onChange={handleCityChange}
+                onKeyDown={(handleKeyDown)}
+              />
+              <SearchCityButton
+                onClick={() => {
+                  setData();
+                  verify();
+                  loadingData();
+                }}
+              >
+                <img
+                  src={Icons.search}
+                  alt="Search Indicator"
+                  className="searchButtonIcon"
+                />
+              </SearchCityButton>
+            </SearchContainer>
+            <WeatherHeader>
+              <span className="cityTemp">{Number(cityTemp).toFixed(0)}°</span>
+              <div>
+                <span className="cityName">{storedCityName}</span>
+                <img src={conditionImg} className="conditionImg" />
+                <span className="cityWeatherDescription">
+                  {cityDescription}
+                </span>
+              </div>
+            </WeatherHeader>
+            <div className="weatherComplementContainer">
+              <div className="weatherComplement">
+                <span className="cityHumidity">
+                  {" "}
+                  <img src={Icons.humidity} alt="Humidity indicator" />{" "}
+                  {cityHumidity}%
+                </span>
+                <span className="cityMaxTemp">
+                  {" "}
+                  <img src={Icons.arrowUp} alt="Max Temp indicator" />
+                  Máxima: {Number(cityMaxTemp).toFixed(0)}°
+                </span>
+                <span className="cityMinTemp">
+                  {" "}
+                  Mínima: {Number(cityMinTemp).toFixed(0)}°{" "}
+                  <img src={Icons.arrowDown} alt="Min Temp indicator" />
+                </span>
+                <span className="cityWind">
+                  {" "}
+                  <img src={Icons.wind} alt="Wind Speed indicator" /> {cityWind}
+                  Km/h
+                </span>
+              </div>
+            </div>
+            <>{listWeathers()}</>
+          </CityWeatherInfosContainer>
+        </WeatherForecastContainer>
+      )}
+    </>
   );
 };
 

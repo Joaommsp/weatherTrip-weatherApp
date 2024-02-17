@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "../../assets/images/weatherTrip-logo.png";
 
+
 import { HeaderContainer, HeaderLinks } from "./style";
 
 const Header = () => {
@@ -15,12 +16,6 @@ const Header = () => {
         <ul>
           <li>
             <Link to="/about">About</Link>
-          </li>
-          <li>
-            <a href="">My Linkedin</a>
-          </li>
-          <li>
-            <a href="">My GitHub</a>
           </li>
         </ul>
       </HeaderLinks>

@@ -17,13 +17,17 @@ export const HeaderContainer = styled.div`
   padding: .5rem 5rem;
 
   .logo {
-    width: 60px;
+    width: 50px;
     transition:  transform .3s ease-in-out;
     cursor: pointer;
   }
 
   .logo:hover {
     transform: scale(1.1);
+  }
+
+  @media only screen and (max-width: 700px) {
+    padding: .5rem 2rem;
   }
 `
 
@@ -50,6 +54,7 @@ export const HeaderLinks = styled.div`
 
   .homeLink {
     text-decoration: none;
+    color: ${theme.secondaryColor};
     font-weight: bold;
     margin-right: 3rem;
     border-bottom: 2px solid transparent;
