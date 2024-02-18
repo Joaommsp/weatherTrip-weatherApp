@@ -21,7 +21,7 @@ WeatherTrip is a real-time weather forecast application. Using the OpenWeather A
 
 </div>
 
-## Easy, Intuitive, and Beautiful Design-
+## Technologies used
 
 - React
 - Vite
@@ -33,7 +33,7 @@ WeatherTrip is a real-time weather forecast application. Using the OpenWeather A
 - Unsplash API
 - OpenWeather API (high-resolution image data)
 
-## Design fácil ,Intuitivo e bonito
+## Easy, Intuitive, and Beautiful Design-
 
 ![](./src/assets/images/readme/MacBook%20Pro-1708218026265.jpeg)
 
@@ -58,6 +58,20 @@ Note: In some browsers, such as Safari, the scroll track may not appear, but it 
 
 <p align="center">
   <img src="./src/assets/images/readme/project-structure.PNG" />
+<p>
+
+### API 
+
+## OpenWeatherAPI
+
+<p align="center">
+  <img src="./src/assets/images/readme/weatherApi.PNG" />
+<p>
+
+
+### Unsplash API
+<p align="center">
+  <img src="./src/assets/images/readme/unsplashAPI.PNG" />
 <p>
 
 ### Running the project

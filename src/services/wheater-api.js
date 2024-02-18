@@ -1,10 +1,10 @@
-const key = "e715a4f7a2a8cc278c3f54f3cca9870b";
-
 // Current weather data
 export async function getWheather(cityName) {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&lang=pt_br&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${
+        import.meta.env.VITE_API_KEY2
+      }&lang=pt_br&units=metric`
     );
     const data = await response.json();
     return data;
@@ -17,7 +17,9 @@ export async function getWheather(cityName) {
 export async function getWheatherDays(cityName) {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${key}&lang=pt_br&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${
+        import.meta.env.VITE_API_KEY2
+      }&lang=pt_br&units=metric`
     );
     const data = await response.json();
     return data;
@@ -25,4 +27,3 @@ export async function getWheatherDays(cityName) {
     console.error("Erro ao buscar dados:", error);
   }
 }
-
