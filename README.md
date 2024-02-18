@@ -1,6 +1,6 @@
 # WeatherTrip
 
-WeatherTrip is a real-time weather forecast application. Using the OpenWeather API Current weather data API and 5 day / 3 hour Forecast API, the website integrates real-time weather conditions from any city in the world, as well as the conditions for the next 5 days (every 5 hours).
+WeatherTrip is a real-time weather forecast application. Using the OpenWeather API Current weather data API and 5 day / 3 hour Forecast API, the website integrates real-time weather conditions from any city in the world, as well as the conditions for the next 5 days (every 3 hours).
 
 ![](./src/assets/images/readme/MacBook%20Pro-1708217894799.jpeg)
 
