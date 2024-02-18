@@ -49,6 +49,10 @@ export const HomeContainer = styled.div`
       padding: 0 1rem;
       padding-bottom: 0.5rem;
     }
+
+    @media only screen and (max-width: 700px) {
+      height: 95vh;
+    }
   }
 
   @media only screen and (min-width: 481px) and (max-width: 1000px) {

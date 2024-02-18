@@ -47,7 +47,7 @@ export const AvatarContainer = styled.div`
   }
 `;
 
-export const AbouteMeContainer = styled.div`
+export const AboutMeContainer = styled.div`
   width: 50%;
   height: 100%;
   padding-top: 2rem;
@@ -63,6 +63,7 @@ export const AbouteMeContainer = styled.div`
   p {
     color: #3c3633;
     font-size: 1.2rem;
+    text-align: justify;
   }
 
   span {
@@ -96,20 +97,19 @@ export const AbouteMeContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
 
-  h2 {
-    font-size: 2rem;
-  }
+    h2 {
+      font-size: 2rem;
+    }
 
-  p {
-    color: #3c3633;
-    font-size: 1rem;
-    text-align: center;
-  }
+    p {
+      color: #3c3633;
+      font-size: 1rem;
+    }
 
-  span {
-    font-size: 1rem;
+    span {
+      font-size: 1rem;
+    }
   }
 
   @media only screen and (min-width: 700px) and (max-width: 1000px) {

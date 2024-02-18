@@ -2,7 +2,7 @@ import Header from "../../components/Header";
 import Avatar from "../../assets/images/aboutMe-Avatar.png";
 import { Icons } from "../../assets/images/svg/icons/icons";
 
-import { AboutContainer, AbouteMeContainer, AvatarContainer } from "./style";
+import { AboutContainer, AboutMeContainer, AvatarContainer } from "./style";
 
 const About = () => {
   return (
@@ -12,7 +12,7 @@ const About = () => {
         <AvatarContainer>
           <img src={Avatar} alt="My avatar Robô de combate na praia" />
         </AvatarContainer>
-        <AbouteMeContainer>
+        <AboutMeContainer>
           <h2>Dev João</h2>
           <p>
             Desenvolvedor FrontEnd estudando para me tornar um Full Stack, esse
@@ -38,7 +38,7 @@ const About = () => {
             {" "}
             <img src={Icons.gittHub} alt="" /> GitHub
           </a>
-        </AbouteMeContainer>
+        </AboutMeContainer>
       </AboutContainer>
     </>
   );

@@ -14,11 +14,11 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .5rem 5rem;
+  padding: 0.5rem 5rem;
 
   .logo {
     width: 50px;
-    transition:  transform .3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     cursor: pointer;
   }
 
@@ -27,12 +27,18 @@ export const HeaderContainer = styled.div`
   }
 
   @media only screen and (max-width: 700px) {
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
+    height: 5vh;
+
+    .logo {
+      width: 25px;
+    }
   }
-`
+`;
 
 export const HeaderLinks = styled.div`
   display: flex;
+  align-items: center;
 
   ul {
     list-style: none;
@@ -40,12 +46,12 @@ export const HeaderLinks = styled.div`
     gap: 2rem;
   }
 
-  ul li a{
+  ul li a {
     text-decoration: none;
     font-weight: 500;
     color: ${theme.secondaryColor};
     border-bottom: 2px solid transparent;
-    transition: .3s ease-in;
+    transition: 0.3s ease-in;
   }
 
   ul li a:hover {
@@ -58,11 +64,22 @@ export const HeaderLinks = styled.div`
     font-weight: bold;
     margin-right: 3rem;
     border-bottom: 2px solid transparent;
-    transition: .3s ease-in;
+    transition: 0.3s ease-in;
   }
 
   .homeLink:hover {
     transform: scale(1.1);
     border-bottom: 2px solid ${theme.secondaryColor};
   }
-`
+
+  @media only screen and (max-width: 700px) {
+    ul li a {
+      font-size: 0.8rem;
+    }
+
+    .homeLink {
+      font-size: 0.8rem;
+      border: 0;
+    }
+  }
+`;

@@ -417,6 +417,21 @@ export const RequestErrorMessage = styled.div`
     color: #ffffff;
     font-size: 1.2rem;
   }
+
+  @media only screen and (max-width: 700px) {
+    top: 10rem;
+    background-color: ${theme.primaryColor};
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow:
+  1px 0px 4px rgba(0, 0, 0, 0.61)
+;
+  }
+
+  span {
+    color: ${theme.secondaryColor};
+    font-size: 1rem;
+  }
 `;
 
 export const LoadingScreen = styled.div`

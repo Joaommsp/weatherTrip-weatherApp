@@ -53,8 +53,8 @@ export const CardContainer = styled.div`
   }
 
   @media only screen and (min-width: 481px) and (max-width: 1000px) {
-    height: 64px;
-    margin-bottom: 0.5rem;
+    height: 74px;
+    margin-bottom: 1rem;
 
     .cityTemp {
       font-size: 1rem;
