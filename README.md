@@ -28,6 +28,7 @@ WeatherTrip is a real-time weather forecast application. Using the OpenWeather A
 - Styled Components
 - CSS animations
 - React Router DOM
+- Local Storage ( save city names in reload )
 - React-spinners (for loading Screen)
 - date-fns
 - Unsplash API
